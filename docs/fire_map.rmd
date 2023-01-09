@@ -1,0 +1,31 @@
+---
+title: "California Fire Map"
+author: "[Jason Allen](https://jcallen1995.github.io/)"
+subtitle: "Years 20XX-20XX"
+output:
+  html_document:
+    code_folding: 'hide'
+    theme: journal
+
+---
+
+So, to start out I need to get some data. I'm thinking of taking; 
+ - California Counties data
+  * US boundaries data package thing should have it.
+ - average rainfall
+ - county population
+ - fire polygons or rasters
+ - city names
+  * I think the uscities.csv file should work, but I need to learn the
+    source for it.
+ - city polygons
+ 
+and basically combining all of these into an interractive map that
+the user can zoom in using the leaflet package, flip through the 
+years and also see a graph showing the estimated number of people
+whose lives were affected by the fires. I could also add other fitting
+data if I find good sources, but realistically, I might struggle to
+even find the data that I have listed here.
+
+Tomorrow I'll get started tracking down the data.
+  
