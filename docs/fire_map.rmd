@@ -10,9 +10,10 @@ output:
 ---
 
 So, to start out I need to get some data. I'm thinking of taking; 
- - California Counties data
-  * US boundaries data package thing should have it.
- - average rainfall
+ - California Counties data (X)
+  * US boundaries data package has it.
+ - average rainfall (X)
+  * got it from national weather sevice.
  - county population
  - fire polygons or rasters
  - city names
@@ -69,6 +70,29 @@ California part of the data. Most likely, I will be projecting the state boundar
 onto the raster and then selecting the raster points within the polygon. Should
 be simple enough once I actually get around to it. I need to also find the rest
 of my data.
+
+The data protocol changed in 2017 for the precip data, so I might need to do something
+different for year 2016 precip data.
+
+Now to check on the r package data sources.
+
+```{r}
+library(USAboundaries)
+
+california_state <- us_boundaries(states = 'california')
+
+cali_counties <- us_boundaries(states = 'california', type = "county")
+
+plot(california_state)
+plot(cali_counties)
+```
+
+Okay, so I've to the cali state and county polys in this package. Next is to check
+on the uscities.csv, and find out where its data comes from as well as the 
+us boundary data comes from.
+
+
+
 
 
 
