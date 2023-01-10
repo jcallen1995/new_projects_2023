@@ -28,4 +28,49 @@ data if I find good sources, but realistically, I might struggle to
 even find the data that I have listed here.
 
 Tomorrow I'll get started tracking down the data. 
-  
+
+```{r}
+library(tidyverse)
+library(raster)
+library(sf)
+library(rgdal)
+
+GDALinfo("../data/nws_precip_ytd_20220101_conus.tif")
+
+precipitation_conus_path <- "../data/nws_precip_ytd_20220101_conus.tif"
+
+precip_conus <- raster(precipitation_conus_path, band = 2)
+
+spplot(precip_conus)
+
+```
+
+Okay, so I've tentatively got my precipitation data, wait, let's check that.
+
+Here's the precipitation data source
+
+https://water.weather.gov/precip/download.php
+
+GeoTIFF
+
+The new QPE GeoTIFFs generated from the NCEP Stage IV data are multi-band GeoTIFF. The bands they contain are:
+
+    Band 1 - Observation - Last 24 hours of QPE spanning 12Z to 12Z in inches
+    Band 2 - PRISM normals - PRISM normals in inches (see "Normal Precipitation" section on the About page)
+    Band 3 - Departure from normal - The departure from normal in inches
+    Band 4 - Percent of normal - The percent of normal
+
+Now, this raster shows precip in inches of rainfall. I'm not going to be using
+this for a quantitative calculation, so simply having this much is enough for me.
+
+The next step will be downloading all of the yearly data rasters from 2016-2022,
+then, once I actually have all of them, I have to figure out how to isolate the
+California part of the data. Most likely, I will be projecting the state boundary
+onto the raster and then selecting the raster points within the polygon. Should
+be simple enough once I actually get around to it. I need to also find the rest
+of my data.
+
+
+
+
+
